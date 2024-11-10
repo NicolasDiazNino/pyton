@@ -10,34 +10,48 @@
 #El usuario ingresa los números y selecciona la operación.
 #El programa muestra el resultado de la operación.
 
-print("\nHola usuario ahora estas entrando a una calculadora")
-print("\npor favor ingresa dos numeros para hacer las operaciones")
+def realizar_calculo():
+    print("\n¡Bienvenido a la calculadora basica! Vamos a hacer algunos calculos")
 
-a= float(input("\nIngresa el primer numero: "))
-b= float(input("\nIngresa el segundo numero: "))
+    try:
+        a= float(input("Ingresa el primer numero: "))
+        b= float(input("Ingresa el segundo numero: "))
+    except ValueError:
+        print("\nError: Por favor ingrese numeros validos")
+        return
 
-print("\nOperaciones")
-print("1. Suma")
-print("2. Resta")
-print("3. Multiplicacion")
-print("4. Division")
+    print("\nOperaciones")
+    print("1. Suma")
+    print("2. Resta")
+    print("3. Multiplicacion")
+    print("4. Division")
 
-operacion= input("\nPor favor elige la operacion (1/2/3/4): ")
+    operacion= input("\nPor favor elige la operacion (1/2/3/4): ")
 
-if operacion == "1":
-    resultado= a + b
-    print("\nEl resultado de la suma es:", resultado)
-elif operacion == "2":
-    resultado= a-b
-    print("\nEl resultado de la resta es:", resultado)
-elif operacion =="3":
-    resultado= a * b
-    print("\nEl resultado de la multiplicacion es:", resultado)
-elif operacion == "4":
-    if b != 0:
-        resultado= a / b
-        print("\nEl resultado de la division es:", resultado)
+    while operacion not in["1", "2", "3", "4"]:
+        operacion = input("\nPor favor elige una operacion valida (1/2/3/4)")
+
+    if operacion == "1":
+        resultado= a + b
+        print("\nEl resultado de la suma es:", resultado)
+    elif operacion == "2":
+        resultado= a-b
+        print("\nEl resultado de la resta es:", resultado)
+    elif operacion =="3":
+        resultado= a * b
+        print("\nEl resultado de la multiplicacion es:", resultado)
+    elif operacion == "4":
+        if b != 0:
+            resultado= a / b
+            print("\nEl resultado de la division es:", resultado)
+        else:
+            print("\nError: No se puede dividir entre cero")
     else:
-        print("\nError: No se puede dividir entre cero")
-else:
-    print("\nOpcion invalida")
+        print("\nOpcion invalida")
+
+while True:
+    realizar_calculo()
+    continuar = input("\n¿Quieres hacer otra operacion? (si/no): ").lower()
+    if continuar!= "si":
+        print("\nGracias por usa la calculadora.")
+        break
